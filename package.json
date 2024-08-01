@@ -1,37 +1,48 @@
 {
-  "name": "tunajs",
-  "version": "1.0.15",
-  "description": "Audio effects library for the Web Audio API",
-  "main": "tuna.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "uglify": "uglifyjs tuna.js -o tuna-min.js",
-    "patch": "npm version patch && npm publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Theodeus/tuna.git"
-  },
-  "keywords": [
-    "web audio",
-    "audio effects",
-    "tuna",
-    "tunajs",
-    "tuna.js"
-  ],
-  "author": "Oskar Eriksson",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Theodeus/tuna/issues"
-  },
-  "homepage": "https://github.com/Theodeus/tuna#readme",
-  "devDependencies": {
-    "eslint": "^5.6.1",
-    "express": "^4.17.1",
-    "uglify-js": "^3.4.9"
-  },
-  "dependencies": {}
+	"name": "tunajs",
+	"version": "2.0.0",
+	"description": "Audio effects library for the Web Audio API",
+	"main": "./dist/index.js",
+	"directories": {
+		"test": "tests"
+	},
+	"files": ["dist"],
+	"type": "module",
+	"exports": {
+		".": {
+			"import": {
+				"default": "./dist/index.js",
+				"types": "./dist/index.d.ts"
+			},
+			"require": {
+				"default": "./index/index.cjs",
+				"types": "./index/index.d.cts"
+			}
+		}
+	},
+	"scripts": {
+		"prepare": "npm run build",
+		"build": "tsup",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"patch": "npm version patch && npm publish"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Theodeus/tuna.git"
+	},
+	"keywords": ["web audio", "audio effects", "tuna", "tunajs", "tuna.js"],
+	"author": "Oskar Eriksson",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Theodeus/tuna/issues"
+	},
+	"homepage": "https://github.com/Theodeus/tuna#readme",
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
+		"@types/audioworklet": "^0.0.57",
+		"@types/node": "^20.14.9",
+		"express": "^4.17.1",
+		"tsup": "^8.1.0",
+		"typescript": "^5.5.2"
+	}
 }
